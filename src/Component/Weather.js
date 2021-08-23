@@ -73,6 +73,7 @@ const GlobalStyle = createGlobalStyle`
 body {
   background-color: ${props=>props.theme.mode ==='dark'?'#111  !important':'#EEE  !important'};
   color: ${props=>props.theme.mode==='dark'?'#EEE  !important':'#111 !important'};
+
   
   
 }`;
@@ -140,11 +141,10 @@ body {
               }}
               
             />
-            
-
-
           </div>
-          {/* <i class="fas fa-search"></i> */}
+          <div className="icon">
+          <i class="fas fa-search"></i>
+          </div>
         </div>
 
         {!data ? (
