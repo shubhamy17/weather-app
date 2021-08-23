@@ -2,7 +2,7 @@
     /* border: 2px solid black; */
     /* width:30%;
     height:100%; */
-    /* background-image:url("https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"); */
+    background-image:url("https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     background-size: 100% 100%;
     display:inline-block;
     /* flex-direction: column;
@@ -17,6 +17,9 @@
     font-family: Montserrat;
     /* background-image: none; */
   }
+  .input_search{
+/* display: inline-block;       */
+}
  .card{
      display: inline-block;
      margin: 5px;
@@ -69,10 +72,17 @@ margin-left: 5px;
 }
  
  input[type="search"] {
-    display: block;
+    display:flex;
     margin : 0 auto;
     background-image: none;
     margin-bottom: 2px;
+    justify-content: center;
+}
+.input i{
+    display:flex;
+    justify-content: center;
+    margin-top:5px;
+    font-size:30px;
 }
  
 

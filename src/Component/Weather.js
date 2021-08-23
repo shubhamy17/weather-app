@@ -5,7 +5,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 
 function Weather() {
-  const [theme, setTheme] = useState({mode:'light'});
+  const [theme, setTheme] = useState({mode:'dark'});
   const [search, setSearch] = useState("Mumbai");
   const [current, setCurrent] = useState(null);
   const [city, setCity] = useState("");
@@ -13,7 +13,8 @@ function Weather() {
   const [daily, setDaily] = useState(null);
   const [data, setData] = useState(null);
 
-  // const [weekday,setDayOfWeek]=useState(null);
+  
+  // Weekly day function
   let setDayOfWeek = function (dayNum) {
   
     var weekday = new Array(7);
@@ -26,15 +27,14 @@ function Weather() {
     return days[s];
   };
   // console.log(setDayOfWeek());
-  
+
+  // timeing function
   let settimes = function (timeNum) {
     var hour = new Array(47);
     var date = new Date();
     var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
     var am_pm = date.getHours() >= 12 ? "pm" : "am";
-    // var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-    // var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-
+    // time conversion function am pm
     function nexthourampm(hour, ampm){
       let nexthour, nextampm;
       if (hour === 11) {
@@ -68,14 +68,16 @@ function Weather() {
 
 
 
+// light mode dark mode function
 const GlobalStyle = createGlobalStyle`
 body {
   background-color: ${props=>props.theme.mode ==='dark'?'#111  !important':'#EEE  !important'};
   color: ${props=>props.theme.mode==='dark'?'#EEE  !important':'#111 !important'};
-
+  
   
 }`;
 
+// fetching data using api
   useEffect(() => {
     const fetchApi = async () => {
       const API_KEY = "b0e89df602025b1b2525a9bd5f0c21d8";
@@ -92,6 +94,7 @@ body {
         const { latitude=0, longitude=0, name="no data" } = latlondata?.data[0];
        
         setCity(name);
+
         const uri = `https://api.openweathermap.org/data/2.5/onecall?units=metric&lat=${latitude}&lon=${longitude}&exclude=${exclude}&appid=${API_KEY}`;
         const weatherres = await fetch(uri);
         const data = await weatherres.json();
@@ -121,20 +124,27 @@ body {
     
       <GlobalStyle />
       <div className="box" id="box">
-        
-        <button className="mode"onClick={e=>setTheme(theme.mode ==='dark' ? {mode:'light'}: {mode:'dark'})}>DarkMode</button>
+        {/*dark mode button*/}
+        <button className="mode"onClick={e=>setTheme(theme.mode ==='dark' ? {mode:'light'}: {mode:'dark'})}>Theme change</button>
    
-        <div>
+        <div className="input_search">
+          {/*input of city*/}
           <div className="input">
             <input
               type="Search"
               value={search}
+              
               placeholder="Enter name of city"
               onChange={(e) => {
                 setSearch(e.target.value);
               }}
+              
             />
+            
+
+
           </div>
+          {/* <i class="fas fa-search"></i> */}
         </div>
 
         {!data ? (
