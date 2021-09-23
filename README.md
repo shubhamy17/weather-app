@@ -1,4 +1,4 @@
-# weather-app
+# Weather-app
  Weather application
  
  <img src="https://github.com/shubhamy17/weather-app/blob/main/5o16k1.gif">
